@@ -1,3 +1,16 @@
+.login_div {
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  /* Center form on page horizontally & vertically */
+  top: 50%;
+  left: 50%;
+  margin-top: -150px;
+  margin-left: -150px;
+}
+
 .jumbotron, .card-body, .container, .site-header{
     font-family: 'Raleway', serif !important;
 }
