@@ -39,6 +39,22 @@
 </head>
 <body>
 
+
+  <script type="text/javascript">
+    function onSignIn(googleUser) {
+      // Useful data for your client-side scripts:
+      var profile = googleUser.getBasicProfile();
+      console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+      console.log('Full Name: ' + profile.getName());
+      console.log("Image URL: " + profile.getImageUrl());
+      console.log("Email: " + profile.getEmail());
+
+      // The ID token you need to pass to your backend:
+      var id_token = googleUser.getAuthResponse().id_token;
+      console.log("ID Token: " + id_token);
+    }
+  </script>
+
   <form action="index.html">
     <body class="text-center">
       <img src="img/login.png" alt="No se cargó la imagen" width="550" height="230"><br><br>
@@ -49,6 +65,7 @@
       <button type="submit" class="btn btn-info" value="Enviar">Enviar</button><br><br>
       <p><input type="checkbox" id="recuerdame"> Recuerdame</p>
       <br><p class="symbol">&copy; 2021</p>
+      
       <script type="text/javascript">
         function authBotton() {
           var InputEmail= document.getElementById("InputEmail");
@@ -56,11 +73,10 @@
         }
         </script>
       <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-    
-</form>
+  </form>
+
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
-  <script src="home.js"></script>
 </body>
 </html>

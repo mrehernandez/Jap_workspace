@@ -3,8 +3,8 @@ const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COUNT = "Cant.";
 var currentCategoriesArray = [];
 var currentSortCriteria = undefined;
-var minCount = undefined;
-var maxCount = undefined;
+var minPrice = undefined;
+var maxPrice = undefined;
 
 function sortCategories(criteria, array){
     let result = [];
@@ -41,8 +41,8 @@ function showCategoriesList(){
     for(let i = 0; i < currentCategoriesArray.length; i++){
         let category = currentCategoriesArray[i];
 
-        if (((minCount == undefined) || (minCount != undefined && parseInt(category.productCount) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
+        if (((minPrice == undefined) || (minPrice != undefined && parseInt(category.productCount) >= minPrice)) &&
+            ((maxPrice == undefined) || (maxPrice != undefined && parseInt(category.productCount) <= maxPrice))){
 
             htmlContentToAppend += `
             <a href="category-info.html" class="list-group-item list-group-item-action">
@@ -105,8 +105,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         document.getElementById("rangeFilterCountMin").value = "";
         document.getElementById("rangeFilterCountMax").value = "";
 
-        minCount = undefined;
-        maxCount = undefined;
+        minPrice = undefined;
+        maxPrice = undefined;
 
         showCategoriesList();
     });
@@ -114,21 +114,21 @@ document.addEventListener("DOMContentLoaded", function(e){
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
         //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
         //de productos por categoría.
-        minCount = document.getElementById("rangeFilterCountMin").value;
-        maxCount = document.getElementById("rangeFilterCountMax").value;
+        minPrice = document.getElementById("rangeFilterCountMin").value;
+        maxPrice = document.getElementById("rangeFilterCountMax").value;
 
-        if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0){
-            minCount = parseInt(minCount);
+        if ((minPrice != undefined) && (minPrice != "") && (parseInt(minPrice)) >= 0){
+            minPrice = parseInt(minPrice);
         }
         else{
-            minCount = undefined;
+            minPrice = undefined;
         }
 
-        if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0){
-            maxCount = parseInt(maxCount);
+        if ((maxPrice != undefined) && (maxPrice != "") && (parseInt(maxPrice)) >= 0){
+            maxPrice = parseInt(maxPrice);
         }
         else{
-            maxCount = undefined;
+            maxPrice = undefined;
         }
 
         showCategoriesList();

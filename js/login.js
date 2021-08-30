@@ -1,8 +1,25 @@
 
+function onLoad(){
+    gapi.load("auth2", function(){
+        gapi.auth2.init();
+    });
+}
+
 function saveNAme(){
     var user= document.getElementById("InputEmail");
     localStorage.setItem("User", JSON.stringify("usuario", user.value));
 }
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function() {
+            console.log("Usuario ha cerrado su cuenta");
+        });
+    }
+function signOut(){
+
+}
+/*
 
 function showNAme(){
     if (Document.getElementById("user")== null);
@@ -18,7 +35,7 @@ function onSignIn(googleUser) {
     console.log('Email: ' + profile.getEmail());
   }
   
-/*function disconnect(){
+function disconnect(){
     localStorage.clear();
     location.href="login.html";
     signOut();
